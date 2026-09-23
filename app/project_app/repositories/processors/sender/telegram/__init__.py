@@ -1,0 +1,1 @@
+"""Module for Telegram sender implementation."""
