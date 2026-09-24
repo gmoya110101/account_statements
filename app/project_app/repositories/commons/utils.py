@@ -11,6 +11,8 @@ from app.project_app.repositories.base.base_logger import WriteLogger
 
 logger = WriteLogger(name=__name__)
 
+DATE_FORMAT = "%Y-%m-%d"
+
 def read_json_file(path:str):
     """Read a JSON file and return its contents."""
     logger.debug(f"Reading JSON file: {path}")
