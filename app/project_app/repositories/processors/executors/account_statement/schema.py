@@ -26,7 +26,7 @@ class SaveLocalSettings(BaseModel):
         return self
 
 
-class ExecutorJobSettings(BaseProcessorJobSettings):
+class AccountStatementJobSettings(BaseProcessorJobSettings):
     """Settings for the executor job."""
 
     downloader: DownloaderJobSettings = DownloaderJobSettings()

@@ -1,17 +1,18 @@
-"""Job for downloading images from dashboard data."""
+"""Job for downloading images from dashboard data and sending them via Telegram."""
 
 from typing import Any
 
+from app.project_app.repositories.base.models import Debtor
 from app.project_app.repositories.commons.utils import (
+    DATE_FORMAT,
     create_local_dir,
     current_datetime,
     save_file_in_local,
 )
 from app.project_app.repositories.processors.base import BaseProcessorJob
 from app.project_app.repositories.processors.downloader.job import DownloaderJob
-from app.project_app.repositories.processors.executor.models import Debtor
-from app.project_app.repositories.processors.executor.schema import (
-    ExecutorJobSettings,
+from app.project_app.repositories.processors.executors.account_statement.schema import (
+    AccountStatementJobSettings,
 )
 from app.project_app.repositories.processors.sender.telegram.job import (
     TelegramSenderJob,
@@ -21,15 +22,14 @@ from app.project_app.repositories.processors.sender.telegram.models import (
     FilesModel,
 )
 
-_DATE_FORMAT = "%Y-%m-%d"
 current_date = current_datetime()
-date_str = current_date.strftime(format=_DATE_FORMAT)
+date_str = current_date.strftime(format=DATE_FORMAT)
 
 
-class ExecutorJob(BaseProcessorJob):
-    def __init__(self, settings: ExecutorJobSettings | dict):
+class AccountStatementJob(BaseProcessorJob):
+    def __init__(self, settings: AccountStatementJobSettings | dict):
         super().__init__(settings)
-        self.settings: ExecutorJobSettings
+        self.settings: AccountStatementJobSettings
         self.downloader: DownloaderJob = self._set_downloader()
         self.sender: TelegramSenderJob = self._set_sender()
 
