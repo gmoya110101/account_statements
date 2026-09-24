@@ -2,7 +2,7 @@
 
 from dotenv import load_dotenv
 
-from app.project_app.use_cases.account_statement import main
+from app.source.use_cases.account_statement import main
 
 load_dotenv()
 
