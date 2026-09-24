@@ -1,1 +1,1 @@
-"""Telegram infrastructure for the project."""
+"""Telegram settings for the project."""

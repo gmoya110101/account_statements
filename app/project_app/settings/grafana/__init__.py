@@ -1,1 +1,1 @@
-"""Grafana infrastructure for the project."""
+"""Grafana settings for the project."""

@@ -2,7 +2,7 @@
 
 from pydantic import BaseModel
 
-from app.project_app.settings import GrafanaSettings, TelegramSettings
+from app.project_app.settings import GlobalSettings, GrafanaSettings, TelegramSettings
 
 
 class AppSettings(BaseModel):
@@ -14,8 +14,12 @@ class AppSettings(BaseModel):
     grafana: GrafanaSettings
     """Grafana settings."""
 
+    global_vars: GlobalSettings
+    """Global settings."""
+
 
 settings = AppSettings(
     telegram=TelegramSettings(),
     grafana=GrafanaSettings(),
+    global_vars=GlobalSettings(),
 )
